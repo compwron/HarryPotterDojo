@@ -71,8 +71,14 @@ public class BookSetTest {
     }
 
     @Test
-    public void priceOfLargestSetOfEmptyBookSetIsZero(){
+    public void priceOfLargestSetOfEmptyBookSetIsZero() {
         BookSet bookSet = new BookSet(new ArrayList<Book>());
         assertThat(bookSet.priceOfLargestSet(), is(0.0));
+    }
+
+    @Test
+    public void priceOfLargestSetOfBookSetWithOneBookSetIs8() {
+        BookSet bookSet = new BookSet(Lists.newArrayList(new Book(BookType.One, 1)));
+        assertThat(bookSet.priceOfLargestSet(), is(8.0));
     }
 }

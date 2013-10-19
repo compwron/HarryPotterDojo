@@ -56,7 +56,7 @@ public class BookSet {
     }
 
     public double priceOfLargestSet() {
-        return 0;
+        return DiscountPercentages.get(bookSetType) * Book.STANDARD_PRICE * bookSetType.numberOfTypesOfBooks;
     }
 
     public String toString() {
