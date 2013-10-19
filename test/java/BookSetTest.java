@@ -32,4 +32,13 @@ public class BookSetTest {
                 .build());
         assertEquals(BookSetType.Two, bookSet.getBookSetType());
     }
+
+    @Test
+    public void theLargestSetOfBooksInBookSetWithTwoBooksDifferentAndSomeBooksTheSameIsStillTwo(){
+        BookSet bookSet = new BookSet(new BooksBuilder()
+                .withBook(new Book(BookType.One, 2))
+                .withBook(new Book(BookType.Two, 3))
+                .build());
+        assertEquals(BookSetType.Two, bookSet.getBookSetType());
+    }
 }
