@@ -7,11 +7,11 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class ShoppingCart2Test {
+public class ShoppingCartTest {
     @Test
     public void shouldCalculateCostOfZeroBooks() {
         List<Book> books = new ArrayList<Book>();
-        assertEquals("0.00 EUR", new ShoppingCart2(books).formattedPrice());
+        assertEquals("0.00 EUR", new ShoppingCart(books).formattedPrice());
     }
 
     @Test

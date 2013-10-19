@@ -2,10 +2,10 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 
-public class ShoppingCart2 {
+public class ShoppingCart {
     private final double booksPrice;
 
-    public ShoppingCart2(List<Book> books) {
+    public ShoppingCart(List<Book> books) {
         BookSet largestBookSetInCart = new BookSet(books);
         this.booksPrice = applyDiscounts(largestBookSetInCart, 0);
     }
