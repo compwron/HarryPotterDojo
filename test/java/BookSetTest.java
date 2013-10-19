@@ -23,4 +23,13 @@ public class BookSetTest {
         BookSet bookSet = new BookSet(Lists.newArrayList(new Book(BookType.One, 2)));
         assertEquals(BookSetType.One, bookSet.getBookSetType());
     }
+
+    @Test
+    public void theLargestSetOfBooksInBookSetWithTwoBooksDifferentIsTwo(){
+        BookSet bookSet = new BookSet(new BooksBuilder()
+                .withBook(new Book(BookType.One, 1))
+                .withBook(new Book(BookType.Two, 1))
+                .build());
+        assertEquals(BookSetType.Two, bookSet.getBookSetType());
+    }
 }
