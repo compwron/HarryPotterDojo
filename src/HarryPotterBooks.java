@@ -6,7 +6,7 @@ import java.util.List;
 public class HarryPotterBooks {
     @Getter
     private final double totalPrice;
-    private HashMap<BookType, Integer> bookTypes = emptyBookTypes();
+        private HashMap<BookType, Integer> bookTypesCount = emptyBookTypes();
 
     public HarryPotterBooks(List<Book> books) {
         calculateBookTypes(books);
@@ -15,7 +15,7 @@ public class HarryPotterBooks {
 
     private void calculateBookTypes(List<Book> books) {
         for (Book book : books) {
-            bookTypes.put(book.getBookType(), bookTypes.get(book.getBookType()) + 1);
+            bookTypesCount.put(book.getBookType(), bookTypesCount.get(book.getBookType()) + 1);
         }
     }
 
@@ -29,8 +29,8 @@ public class HarryPotterBooks {
 
     private double calculateTotalPrice(List<Book> books) {
         double totalPrice = 0.0;
-        for (BookType bookType : bookTypes.keySet()) {
-            int numbersOfThisTypeOfBook = bookTypes.get(bookType);
+        for (BookType bookType : bookTypesCount.keySet()) {
+            int numbersOfThisTypeOfBook = bookTypesCount.get(bookType);
             double totalPriceWithoutDiscountForBookType = numbersOfThisTypeOfBook * Book.STANDARD_PRICE;
             double salePriceOfAllBooksOfBookType = totalPriceWithoutDiscountForBookType * DiscountPercentages.get(numbersOfThisTypeOfBook);
             totalPrice += salePriceOfAllBooksOfBookType;

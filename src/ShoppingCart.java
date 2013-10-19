@@ -15,9 +15,6 @@ public class ShoppingCart {
         return formatPriceToTwoDigits(this.booksPrice) + " EUR";
     }
 
-
-
-
     private String formatPriceToTwoDigits(double booksPrice) {
         NumberFormat formatter = new DecimalFormat("#0.00");
         return formatter.format(booksPrice);
