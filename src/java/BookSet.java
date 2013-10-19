@@ -7,10 +7,12 @@ import java.util.List;
 
 @EqualsAndHashCode
 public class BookSet {
+    private final List<Book> books;
     @Getter
     private BookSetType bookSetType;
 
     public BookSet(List<Book> books) {
+        this.books = books;
         this.bookSetType = bookSetTypeOf(findBooksPresent(books));
     }
 
@@ -37,10 +39,27 @@ public class BookSet {
     }
 
     public BookSet removeLargestSet() {
-        return new BookSet(new ArrayList<Book>());
+        return new BookSet(removeOneOfEachBook(books));
+    }
+
+    private List<Book> removeOneOfEachBook(List<Book> books) {
+        List<Book> reducedBookList = new ArrayList<Book>();
+        for (Book book : books) {
+            reducedBookList.add(new Book(book.getBookType(), decrementBookCount(book)));
+        }
+        return reducedBookList;
+    }
+
+    private int decrementBookCount(Book book) {
+        int reducedCount = book.getBookCount() - 1;
+        return reducedCount >= 0 ? reducedCount : 0;
     }
 
     public double priceOfLargestSet() {
         return 0;
+    }
+
+    public String toString() {
+        return "[BookSetType: " + bookSetType + "]";
     }
 }

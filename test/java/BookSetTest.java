@@ -1,4 +1,5 @@
 import com.google.common.collect.Lists;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -46,5 +47,25 @@ public class BookSetTest {
     public void shouldReturnEmptyBookSetFromEmptyBookSetWhenAskedToRemoveCurrentLargestBookSet(){
         BookSet bookSet = new BookSet(new ArrayList<Book>());
         assertEquals(new BookSet(new ArrayList<Book>()), bookSet.removeLargestSet());
+    }
+
+    @Test
+    public void shouldReturnEmptyBookSetWhenRemovingCurrentLargestBookSetFromSetWithOneBook(){
+        BookSet expectedBookSet = new BookSet(Lists.newArrayList(new Book(BookType.One, 1)));
+
+        BookSet startingBookSet = new BookSet(Lists.newArrayList(new Book(BookType.One, 2)));
+
+        BookSet bookSet = startingBookSet.removeLargestSet();
+        assertEquals(expectedBookSet, bookSet);
+    }
+
+    @Ignore
+    @Test
+    public void shouldReturnBookSetWithOneBookWhenRemovingCurrentLargestBookSetFromSetWithTwoOfOneTypeOfBook(){
+        BookSet expectedBookSet = new BookSet(Lists.newArrayList(new Book(BookType.One, 1)));
+
+        BookSet startingBookSet = new BookSet(Lists.newArrayList(new Book(BookType.One, 2)));
+
+        assertEquals(expectedBookSet, startingBookSet.removeLargestSet());
     }
 }
