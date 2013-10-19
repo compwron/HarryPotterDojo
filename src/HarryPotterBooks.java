@@ -27,7 +27,7 @@ public class HarryPotterBooks {
 
     private void calculateBookTypes(List<Book> books) {
         for (Book book : books) {
-            bookTypesCount.put(book.getBookType(), bookTypesCount.get(book.getBookType()) + 1);
+            bookTypesCount.put(book.getBookType(), bookTypesCount.get(book.getBookType()) + book.getBookCount());
         }
     }
 

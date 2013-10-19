@@ -61,7 +61,7 @@ public class ShoppingCartTest {
                 .withBook(new Book(BookType.Two, 2))
                 .build();
 //       (8 * 2 * .95) + 8
-        assertEquals("23.2 EUR", new ShoppingCart(books).formattedPrice());
+        assertEquals("23.20 EUR", new ShoppingCart(books).formattedPrice());
     }
 
 }
