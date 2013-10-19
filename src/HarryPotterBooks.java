@@ -7,17 +7,13 @@ public class HarryPotterBooks {
     private double booksPrice;
     private HashMap<BookType, Integer> bookTypes = emptyBookTypes();
 
-    private HashMap<BookType, Integer> emptyBookTypes() {
-        HashMap<BookType, Integer> emptyBookTypes = new HashMap<BookType, Integer>();
-        for (BookType bookType : BookType.values()){
-            emptyBookTypes.put(bookType, 0);
-        }
-        return emptyBookTypes;
-    }
-
     public HarryPotterBooks(List<Book> books) {
         findBookTypes(books);
         this.booksPrice = calculateTotalPrice(books);
+    }
+
+    public String formattedPrice() {
+        return formatPriceToTwoDigits(this.booksPrice) + " EUR";
     }
 
     private void findBookTypes(List<Book> books) {
@@ -26,19 +22,31 @@ public class HarryPotterBooks {
         }
     }
 
-    public String formattedPrice() {
-        return formatPriceToTwoDigits(this.booksPrice) + " EUR";
+    private HashMap<BookType, Integer> emptyBookTypes() {
+        HashMap<BookType, Integer> emptyBookTypes = new HashMap<BookType, Integer>();
+        for (BookType bookType : BookType.values()) {
+            emptyBookTypes.put(bookType, 0);
+        }
+        return emptyBookTypes;
     }
 
     private double calculateTotalPrice(List<Book> books) {
-        double totalPriceWithoutDiscount =  books.size() * Book.STANDARD_PRICE;
+        double totalPriceWithoutDiscount = numberOfBooks(books) * Book.STANDARD_PRICE;
         return totalPriceWithoutDiscount * DiscountPercentages.get(typesOfBooks(books));
+    }
+
+    private int numberOfBooks(List<Book> books) {
+        int numberOfBooks = 0;
+        for (Book book : books) {
+            numberOfBooks += book.getBookCount();
+        }
+        return numberOfBooks;
     }
 
     private int typesOfBooks(List<Book> books) {
         int typesOfBooks = 0;
-        for (BookType bookType : bookTypes.keySet()){
-            if (bookTypes.get(bookType) != 0){
+        for (BookType bookType : bookTypes.keySet()) {
+            if (bookTypes.get(bookType) != 0) {
                 typesOfBooks += 1;
             }
         }

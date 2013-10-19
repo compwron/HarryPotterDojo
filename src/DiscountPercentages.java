@@ -10,6 +10,7 @@ public class DiscountPercentages {
         HashMap<Integer, Double> percentagesPerNumberOfBookTypes = new HashMap<Integer, Double>();
         percentagesPerNumberOfBookTypes.put(1, 1.00);
         percentagesPerNumberOfBookTypes.put(2, 0.95);
+        percentagesPerNumberOfBookTypes.put(3, 0.90);
         return percentagesPerNumberOfBookTypes;
     }
 }
