@@ -1,6 +1,6 @@
 public enum BookSetType {
     None(0), One(1), Two(2);
-    private int numberOfTypesOfBooks;
+    public int numberOfTypesOfBooks;
 
     BookSetType(int numberOfTypesOfBooks) {
         this.numberOfTypesOfBooks = numberOfTypesOfBooks;

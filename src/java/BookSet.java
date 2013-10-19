@@ -62,4 +62,8 @@ public class BookSet {
     public String toString() {
         return "[BookSetType: " + bookSetType + "]";
     }
+
+    public boolean hasNoMoreMultiSets() {
+        return bookSetType.numberOfTypesOfBooks <= 1;
+    }
 }

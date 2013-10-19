@@ -11,7 +11,7 @@ public class ShoppingCart2 {
     }
 
     private double applyDiscounts(BookSet bookSet, double currentTotal) {
-        if (bookSet.getBookSetType().equals(BookSetType.One)) {
+        if (bookSet.hasNoMoreMultiSets()) {
             return currentTotal + bookSet.priceOfLargestSet();
         } else {
             return applyDiscounts(bookSet.removeLargestSet(), currentTotal + bookSet.priceOfLargestSet());
