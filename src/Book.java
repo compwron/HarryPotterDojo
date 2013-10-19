@@ -1,6 +1,8 @@
 import lombok.Getter;
 
 public class Book {
+    public static int STANDARD_PRICE = 8;
+
     @Getter
     private final int bookCount;
 

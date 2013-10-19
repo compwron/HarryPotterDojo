@@ -15,7 +15,7 @@ public class HarryPotterBooks {
         for(Book book : books){
             totalBooks += book.getBookCount();
         }
-        return totalBooks * 8;
+        return totalBooks * Book.STANDARD_PRICE;
     }
 
     public String formattedPrice() {
