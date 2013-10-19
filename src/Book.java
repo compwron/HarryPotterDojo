@@ -6,7 +6,11 @@ public class Book {
     @Getter
     private final int bookCount;
 
+    @Getter
+    private final BookType bookType;
+
     public Book(BookType bookType, int bookCount) {
+        this.bookType = bookType;
         this.bookCount = bookCount;
     }
 
