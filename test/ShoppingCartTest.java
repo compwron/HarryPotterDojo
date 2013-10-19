@@ -56,7 +56,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void shouldOnlyRecieveDiscountOnDifferentBooksButNotOnSameBooks(){
+    public void shouldOnlyReceiveDiscountOnDifferentBooksButNotOnSameBooks(){
         List<Book> books = new BooksBuilder().withBook(new Book(BookType.One, 1))
                 .withBook(new Book(BookType.Two, 2))
                 .build();

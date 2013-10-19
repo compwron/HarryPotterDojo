@@ -50,6 +50,13 @@ public class HarryPotterBooks {
     }
 
     private int numberOfNonDiscountedBooks(BookType bookType) {
+        if (numberOfDifferentBooks < 2){
+            return bookTypesCount.get(bookType);
+        }
         return (bookTypesCount.get(bookType) - 1) > 0 ? bookTypesCount.get(bookType) - 1 : 0;
     }
+
+//     Number of non discounted books for a book type is:
+//    how many book types are there? If there are is 1, then discounted count = total count.
+//    else, it is total count - 1
 }
