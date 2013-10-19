@@ -17,8 +17,8 @@ public class HarryPotterBooks {
 
     private Integer numberOfDifferentBookTypes(HashMap<BookType, Integer> bookTypesCount) {
         int numberOfBookTypes = 0;
-        for (BookType bookType : bookTypesCount.keySet()){
-            if (bookTypesCount.get(bookType) != 0){
+        for (BookType bookType : bookTypesCount.keySet()) {
+            if (bookTypesCount.get(bookType) != 0) {
                 numberOfBookTypes += 1;
             }
         }
@@ -41,19 +41,34 @@ public class HarryPotterBooks {
 
     private double calculateTotalPrice(List<Book> books) {
         double totalPrice = 0.0;
-        for (BookType bookType : bookTypesCount.keySet()){
-            double priceOfOneDiscountedBook = bookTypesCount.get(bookType) * DiscountPercentages.get(numberOfDifferentBooks) * Book.STANDARD_PRICE;
-            double priceOfNonDiscountedBooks =  numberOfNonDiscountedBooks(bookType) * Book.STANDARD_PRICE;
-            totalPrice += priceOfOneDiscountedBook + priceOfNonDiscountedBooks;
+        for (BookType bookType : bookTypesCount.keySet()) {
+            double priceOfDiscountedBook = numberOfDiscountedBooksForBookType(bookType) * DiscountPercentages.get(numberOfDifferentBooks) * Book.STANDARD_PRICE;
+            double priceOfNonDiscountedBooks = numberOfNonDiscountedBooks(bookType) * Book.STANDARD_PRICE;
+            totalPrice += priceOfDiscountedBook + priceOfNonDiscountedBooks;
         }
         return totalPrice;
     }
 
-    private int numberOfNonDiscountedBooks(BookType bookType) {
-        if (numberOfDifferentBooks < 2){
-            return bookTypesCount.get(bookType);
+    private int numberOfDiscountedBooksForBookType(BookType bookType) {
+        if (bookTypesCount.get(bookType) > 0){
+            return numberOfDifferentBooks == 1 ? 0 : 1;
         }
-        return (bookTypesCount.get(bookType) - 1) > 0 ? bookTypesCount.get(bookType) - 1 : 0;
+        return 0;
+    }
+
+    private int numberOfNonDiscountedBooks(BookType bookType) {
+        int nonDiscountedBooks = bookTypesCount.get(bookType) - numberOfDiscountedBooksForBookType(bookType);
+        return nonDiscountedBooks >= 0 ? nonDiscountedBooks : 0;
+//        if (numberOfDifferentBooks == 1) {
+//            if (bookTypesCount.get(bookType) == 1){
+//                return 0;
+//            }
+//            return bookTypesCount.get(bookType);
+//        }
+////        for 1 book of 1 type, should return 0
+////         for 2 books of same type, should return 2
+
+//        return (bookTypesCount.get(bookType) - 1) > 0 ? bookTypesCount.get(bookType) - 1 : 0;
     }
 
 //     Number of non discounted books for a book type is:
