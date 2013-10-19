@@ -12,7 +12,7 @@ public class HarryPotterBooks {
     public HarryPotterBooks(List<Book> books) {
         calculateBookTypes(books);
         this.numberOfDifferentBooks = numberOfDifferentBookTypes(bookTypesCount);
-        this.totalPrice = calculateTotalPrice(books);
+        this.totalPrice = calculateTotalPrice();
     }
 
     private Integer numberOfDifferentBookTypes(HashMap<BookType, Integer> bookTypesCount) {
@@ -39,7 +39,7 @@ public class HarryPotterBooks {
         return emptyBookTypes;
     }
 
-    private double calculateTotalPrice(List<Book> books) {
+    private double calculateTotalPrice() {
         double totalPrice = 0.0;
         for (BookType bookType : bookTypesCount.keySet()) {
             double priceOfDiscountedBook = numberOfDiscountedBooksForBookType(bookType) * DiscountPercentages.get(numberOfDifferentBooks) * Book.STANDARD_PRICE;
@@ -50,7 +50,7 @@ public class HarryPotterBooks {
     }
 
     private int numberOfDiscountedBooksForBookType(BookType bookType) {
-        if (bookTypesCount.get(bookType) > 0){
+        if (bookTypesCount.get(bookType) > 0) {
             return numberOfDifferentBooks == 1 ? 0 : 1;
         }
         return 0;
@@ -59,19 +59,5 @@ public class HarryPotterBooks {
     private int numberOfNonDiscountedBooks(BookType bookType) {
         int nonDiscountedBooks = bookTypesCount.get(bookType) - numberOfDiscountedBooksForBookType(bookType);
         return nonDiscountedBooks >= 0 ? nonDiscountedBooks : 0;
-//        if (numberOfDifferentBooks == 1) {
-//            if (bookTypesCount.get(bookType) == 1){
-//                return 0;
-//            }
-//            return bookTypesCount.get(bookType);
-//        }
-////        for 1 book of 1 type, should return 0
-////         for 2 books of same type, should return 2
-
-//        return (bookTypesCount.get(bookType) - 1) > 0 ? bookTypesCount.get(bookType) - 1 : 0;
     }
-
-//     Number of non discounted books for a book type is:
-//    how many book types are there? If there are is 1, then discounted count = total count.
-//    else, it is total count - 1
 }
