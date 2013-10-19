@@ -1,4 +1,5 @@
 import com.google.common.collect.Lists;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -64,6 +65,7 @@ public class ShoppingCartTest {
         assertEquals("23.20 EUR", new ShoppingCart(books).formattedPrice());
     }
 
+    @Ignore
     @Test
     public void shouldApplyAsManyMultiBookDiscountsAsAreAvailable() {
         List<Book> books = new BooksBuilder().withBook(new Book(BookType.One, 2))

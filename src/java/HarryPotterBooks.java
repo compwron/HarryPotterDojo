@@ -15,6 +15,19 @@ public class HarryPotterBooks {
         this.totalPrice = calculateTotalPrice();
     }
 
+//    number of available discounts:
+//    must have 1 of each book
+
+    private double calculateTotalPrice() {
+        double totalPrice = 0.0;
+        for (BookType bookType : bookTypesCount.keySet()) {
+            double priceOfDiscountedBook = numberOfDiscountedBooksForBookType(bookType) * DiscountPercentages.get(numberOfDifferentBooks) * Book.STANDARD_PRICE;
+            double priceOfNonDiscountedBooks = numberOfNonDiscountedBooks(bookType) * Book.STANDARD_PRICE;
+            totalPrice += priceOfDiscountedBook + priceOfNonDiscountedBooks;
+        }
+        return totalPrice;
+    }
+
     private Integer numberOfDifferentBookTypes(HashMap<BookType, Integer> bookTypesCount) {
         int numberOfBookTypes = 0;
         for (BookType bookType : bookTypesCount.keySet()) {
@@ -37,16 +50,6 @@ public class HarryPotterBooks {
             emptyBookTypes.put(bookType, 0);
         }
         return emptyBookTypes;
-    }
-
-    private double calculateTotalPrice() {
-        double totalPrice = 0.0;
-        for (BookType bookType : bookTypesCount.keySet()) {
-            double priceOfDiscountedBook = numberOfDiscountedBooksForBookType(bookType) * DiscountPercentages.get(numberOfDifferentBooks) * Book.STANDARD_PRICE;
-            double priceOfNonDiscountedBooks = numberOfNonDiscountedBooks(bookType) * Book.STANDARD_PRICE;
-            totalPrice += priceOfDiscountedBook + priceOfNonDiscountedBooks;
-        }
-        return totalPrice;
     }
 
     private int numberOfDiscountedBooksForBookType(BookType bookType) {
