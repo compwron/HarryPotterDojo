@@ -1,8 +1,11 @@
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@EqualsAndHashCode
 public class BookSet {
     @Getter
     private BookSetType bookSetType;
@@ -34,7 +37,7 @@ public class BookSet {
     }
 
     public BookSet removeLargestSet() {
-        return null;
+        return new BookSet(new ArrayList<Book>());
     }
 
     public double priceOfLargestSet() {

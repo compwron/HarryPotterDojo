@@ -41,4 +41,10 @@ public class BookSetTest {
                 .build());
         assertEquals(BookSetType.Two, bookSet.getBookSetType());
     }
+
+    @Test
+    public void shouldReturnEmptyBookSetFromEmptyBookSetWhenAskedToRemoveCurrentLargestBookSet(){
+        BookSet bookSet = new BookSet(new ArrayList<Book>());
+        assertEquals(new BookSet(new ArrayList<Book>()), bookSet.removeLargestSet());
+    }
 }
