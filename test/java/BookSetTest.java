@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 
 public class BookSetTest {
@@ -66,5 +68,11 @@ public class BookSetTest {
         BookSet expectedBookSet = new BookSet(Lists.newArrayList(new Book(BookType.One, 1)));
         BookSet startingBookSet = new BookSet(Lists.newArrayList(new Book(BookType.One, 2)));
         assertEquals(expectedBookSet, startingBookSet.removeLargestSet());
+    }
+
+    @Test
+    public void priceOfLargestSetOfEmptyBookSetIsZero(){
+        BookSet bookSet = new BookSet(new ArrayList<Book>());
+        assertThat(bookSet.priceOfLargestSet(), is(0.0));
     }
 }
