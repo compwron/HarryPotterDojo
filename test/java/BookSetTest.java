@@ -3,6 +3,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -80,5 +81,16 @@ public class BookSetTest {
     public void priceOfLargestSetOfBookSetWithOneBookSetIs8() {
         BookSet bookSet = new BookSet(Lists.newArrayList(new Book(BookType.One, 1)));
         assertThat(bookSet.priceOfLargestSet(), is(8.0));
+    }
+
+    @Test
+    public void shouldCalculatePriceOfLargestSetOfBookSetWithFiveDifferentBooksAndAssortedOtherBooks() {
+        BookSet bookSet = new BookSet(new BooksBuilder().withBook(new Book(BookType.One, 99))
+                .withBook(new Book(BookType.Two, 400))
+                .withBook(new Book(BookType.Three, 542352))
+                .withBook(new Book(BookType.Four, 3453234))
+                .withBook(new Book(BookType.Five, 23))
+                .build());
+        assertThat(bookSet.priceOfLargestSet(), is(5 * 8 * 0.75));
     }
 }
