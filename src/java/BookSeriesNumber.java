@@ -1,3 +1,3 @@
-public enum BookType {
+public enum BookSeriesNumber {
     Two, Three, Four, Five, One
 }

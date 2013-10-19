@@ -16,9 +16,9 @@ public class BookSet {
         this.bookSetType = bookSetTypeOf(findBooksPresent(books));
     }
 
-    private BookSetType bookSetTypeOf(HashMap<BookType, Boolean> booksPresent) {
+    private BookSetType bookSetTypeOf(HashMap<BookSeriesNumber, Boolean> booksPresent) {
         int numberOfTypesOfBooks = 0;
-        for (BookType bookType : booksPresent.keySet()) {
+        for (BookSeriesNumber bookType : booksPresent.keySet()) {
             if (booksPresent.get(bookType)) {
                 numberOfTypesOfBooks++;
             }
@@ -26,8 +26,8 @@ public class BookSet {
         return BookSetType.valueOf(numberOfTypesOfBooks);
     }
 
-    private HashMap<BookType, Boolean> findBooksPresent(List<HarryPotterBookType> books) {
-        HashMap<BookType, Boolean> booksPresent = new HashMap<BookType, Boolean>();
+    private HashMap<BookSeriesNumber, Boolean> findBooksPresent(List<HarryPotterBookType> books) {
+        HashMap<BookSeriesNumber, Boolean> booksPresent = new HashMap<BookSeriesNumber, Boolean>();
         for (HarryPotterBookType book : books) {
             booksPresent.put(book.getBookType(), true);
         }
