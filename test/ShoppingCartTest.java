@@ -56,12 +56,37 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void shouldOnlyReceiveDiscountOnDifferentBooksButNotOnSameBooks(){
+    public void shouldOnlyReceiveDiscountOnDifferentBooksButNotOnSameBooks() {
         List<Book> books = new BooksBuilder().withBook(new Book(BookType.One, 1))
                 .withBook(new Book(BookType.Two, 2))
                 .build();
 //       (8 * 2 * .95) + 8
         assertEquals("23.20 EUR", new ShoppingCart(books).formattedPrice());
     }
+
+    @Test
+    public void shouldApplyAsManyMultiBookDiscountsAsAreAvailable() {
+        List<Book> books = new BooksBuilder().withBook(new Book(BookType.One, 2))
+                .withBook(new Book(BookType.Two, 2))
+                .build();
+//       (8 * 2 * .80) + (8 * 2 * .80)
+        assertEquals("23.20 EUR", new ShoppingCart(books).formattedPrice());
+    }
+
+//    @Test
+//    public void shouldChooseBestDiscountCombination() {
+////        It isn’t 5*8*0.75+3*8*0.90. It is in fact 4*8*0.8+4*8*0.8.
+//
+////        It isn’t
+////        numberOfDifferentBooks * Book.STANDARD_PRICE * DiscountPercentages.get(5 differnt books) + 3*8*0.90.
+//        List<Book> books = new BooksBuilder().withBook(new Book(BookType.One, 2))
+//                .withBook(new Book(BookType.Two, 2))
+//                .withBook(new Book(BookType.Three, 2))
+//                .withBook(new Book(BookType.Four, 1))
+//                .withBook(new Book(BookType.Five, 1))
+//                .build();
+//        assertEquals("51.20 EUR", new ShoppingCart(books).formattedPrice());
+//
+//    }
 
 }
