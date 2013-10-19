@@ -8,6 +8,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class BookSet {
     private final List<HarryPotterBookType> books;
+
     @Getter
     private BookSetType bookSetType;
 
@@ -32,10 +33,6 @@ public class BookSet {
             booksPresent.put(book.getBookType(), true);
         }
         return booksPresent;
-    }
-
-    public int totalBooksCount() {
-        return 0;
     }
 
     public BookSet removeLargestSet() {
