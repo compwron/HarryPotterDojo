@@ -72,6 +72,24 @@ public class BookSetTest {
     }
 
     @Test
+    public void bookSetTypeShouldBeTwoWhenThereAreTwoBooksOfDifferentTypes(){
+        BookSet startingBookSet = new BookSet(new BooksBuilder()
+                .withBook(new Book(BookType.One, 1))
+                .withBook(new Book(BookType.Two, 1))
+                .build());
+        assertThat(startingBookSet.getBookSetType(), is(BookSetType.Two));
+    }
+
+    @Test
+    public void typeOfBookSetMadeByRemovingAllBooksInSetShouldBeNone(){
+        BookSet startingBookSet = new BookSet(new BooksBuilder()
+                .withBook(new Book(BookType.One, 1))
+                .withBook(new Book(BookType.Two, 1))
+                .build());
+        assertThat(startingBookSet.removeLargestSet().getBookSetType(), is(BookSetType.None));
+    }
+
+    @Test
     public void priceOfLargestSetOfEmptyBookSetIsZero() {
         BookSet bookSet = new BookSet(new ArrayList<Book>());
         assertThat(bookSet.priceOfLargestSet(), is(0.0));

@@ -45,14 +45,18 @@ public class BookSet {
     private List<Book> removeOneOfEachBook(List<Book> books) {
         List<Book> reducedBookList = new ArrayList<Book>();
         for (Book book : books) {
-            reducedBookList.add(new Book(book.getBookType(), decrementBookCount(book)));
+            Book bookWithDecrementedCount = decrementBookCount(book);
+            if (bookWithDecrementedCount.hasBooks()) {
+                reducedBookList.add(bookWithDecrementedCount);
+            }
         }
         return reducedBookList;
     }
 
-    private int decrementBookCount(Book book) {
+    private Book decrementBookCount(Book book) {
         int reducedCount = book.getBookCount() - 1;
-        return reducedCount >= 0 ? reducedCount : 0;
+        int validReducedCount = reducedCount >= 0 ? reducedCount : 0;
+        return new Book(book.getBookType(), validReducedCount);
     }
 
     public double priceOfLargestSet() {
