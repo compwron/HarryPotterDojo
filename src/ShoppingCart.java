@@ -3,12 +3,12 @@ import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.List;
 
-public class HarryPotterBooks {
+public class ShoppingCart {
     private double booksPrice;
     private HashMap<BookType, Integer> bookTypes = emptyBookTypes();
 
-    public HarryPotterBooks(List<Book> books) {
-        findBookTypes(books);
+    public ShoppingCart(List<Book> books) {
+        calculateBookTypes(books);
         this.booksPrice = calculateTotalPrice(books);
     }
 
@@ -16,7 +16,7 @@ public class HarryPotterBooks {
         return formatPriceToTwoDigits(this.booksPrice) + " EUR";
     }
 
-    private void findBookTypes(List<Book> books) {
+    private void calculateBookTypes(List<Book> books) {
         for (Book book : books) {
             bookTypes.put(book.getBookType(), bookTypes.get(book.getBookType()) + 1);
         }
@@ -31,8 +31,14 @@ public class HarryPotterBooks {
     }
 
     private double calculateTotalPrice(List<Book> books) {
-        double totalPriceWithoutDiscount = numberOfBooks(books) * Book.STANDARD_PRICE;
-        return totalPriceWithoutDiscount * DiscountPercentages.get(typesOfBooks(books));
+        double totalPrice = 0.0;
+        for (BookType bookType : bookTypes.keySet()) {
+            int numbersOfThisTypeOfBook = bookTypes.get(bookType);
+            double totalPriceWithoutDiscountForBookType = numbersOfThisTypeOfBook * Book.STANDARD_PRICE;
+            double salePriceOfAllBooksOfBookType = totalPriceWithoutDiscountForBookType * DiscountPercentages.get(numbersOfThisTypeOfBook);
+            totalPrice += salePriceOfAllBooksOfBookType;
+        }
+        return totalPrice;
     }
 
     private int numberOfBooks(List<Book> books) {

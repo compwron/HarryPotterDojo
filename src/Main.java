@@ -11,7 +11,7 @@ public class Main {
         books.add(new Book(BookType.Four, 1));
         books.add(new Book(BookType.Five, 1));
 
-        HarryPotterBooks cart = new HarryPotterBooks(books);
+        ShoppingCart cart = new ShoppingCart(books);
 
         System.out.println("Price of  2 copies of the first book, 2 copies of the second book, 2 copies of the third book, 1 copy of the fourth book, 1 copy of the fifth book: " + cart.formattedPrice());
     }
