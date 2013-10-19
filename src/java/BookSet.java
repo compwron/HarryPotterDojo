@@ -30,7 +30,7 @@ public class BookSet {
     private HashMap<BookSeriesNumber, Boolean> findBooksPresent(List<HarryPotterBookType> books) {
         HashMap<BookSeriesNumber, Boolean> booksPresent = new HashMap<BookSeriesNumber, Boolean>();
         for (HarryPotterBookType book : books) {
-            booksPresent.put(book.getBookType(), true);
+            booksPresent.put(book.getBookSeriesNumber(), true);
         }
         return booksPresent;
     }
@@ -53,7 +53,7 @@ public class BookSet {
     private HarryPotterBookType decrementBookCount(HarryPotterBookType book) {
         int reducedCount = book.getBookCount() - 1;
         int validReducedCount = reducedCount >= 0 ? reducedCount : 0;
-        return new HarryPotterBookType(book.getBookType(), validReducedCount);
+        return new HarryPotterBookType(book.getBookSeriesNumber(), validReducedCount);
     }
 
     public double priceOfLargestSet() {
@@ -65,6 +65,6 @@ public class BookSet {
     }
 
     public boolean hasNoMoreMultiSets() {
-        return bookSetType.numberOfTypesOfBooks <= 1;
+        return bookSetType.numberOfTypesOfBooks < 1;
     }
 }
