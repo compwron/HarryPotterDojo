@@ -28,4 +28,16 @@ public class BookSet {
         }
         return booksPresent;
     }
+
+    public int totalBooksCount() {
+        return 0;
+    }
+
+    public BookSet removeLargestSet() {
+        return null;
+    }
+
+    public double priceOfLargestSet() {
+        return 0;
+    }
 }
