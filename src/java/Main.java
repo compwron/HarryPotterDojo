@@ -4,12 +4,12 @@ import java.util.List;
 
 public class Main {
     public static void main(String... args){
-        List<Book> books = Lists.newArrayList();
-        books.add(new Book(BookType.One, 2));
-        books.add(new Book(BookType.Two, 2));
-        books.add(new Book(BookType.Three, 2));
-        books.add(new Book(BookType.Four, 1));
-        books.add(new Book(BookType.Five, 1));
+        List<HarryPotterBookType> books = Lists.newArrayList();
+        books.add(new HarryPotterBookType(BookType.One, 2));
+        books.add(new HarryPotterBookType(BookType.Two, 2));
+        books.add(new HarryPotterBookType(BookType.Three, 2));
+        books.add(new HarryPotterBookType(BookType.Four, 1));
+        books.add(new HarryPotterBookType(BookType.Five, 1));
 
         ShoppingCart cart = new ShoppingCart(books);
 

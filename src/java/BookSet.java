@@ -7,11 +7,11 @@ import java.util.List;
 
 @EqualsAndHashCode
 public class BookSet {
-    private final List<Book> books;
+    private final List<HarryPotterBookType> books;
     @Getter
     private BookSetType bookSetType;
 
-    public BookSet(List<Book> books) {
+    public BookSet(List<HarryPotterBookType> books) {
         this.books = books;
         this.bookSetType = bookSetTypeOf(findBooksPresent(books));
     }
@@ -26,9 +26,9 @@ public class BookSet {
         return BookSetType.valueOf(numberOfTypesOfBooks);
     }
 
-    private HashMap<BookType, Boolean> findBooksPresent(List<Book> books) {
+    private HashMap<BookType, Boolean> findBooksPresent(List<HarryPotterBookType> books) {
         HashMap<BookType, Boolean> booksPresent = new HashMap<BookType, Boolean>();
-        for (Book book : books) {
+        for (HarryPotterBookType book : books) {
             booksPresent.put(book.getBookType(), true);
         }
         return booksPresent;
@@ -42,10 +42,10 @@ public class BookSet {
         return new BookSet(removeOneOfEachBook(books));
     }
 
-    private List<Book> removeOneOfEachBook(List<Book> books) {
-        List<Book> reducedBookList = new ArrayList<Book>();
-        for (Book book : books) {
-            Book bookWithDecrementedCount = decrementBookCount(book);
+    private List<HarryPotterBookType> removeOneOfEachBook(List<HarryPotterBookType> books) {
+        List<HarryPotterBookType> reducedBookList = new ArrayList<HarryPotterBookType>();
+        for (HarryPotterBookType book : books) {
+            HarryPotterBookType bookWithDecrementedCount = decrementBookCount(book);
             if (bookWithDecrementedCount.hasBooks()) {
                 reducedBookList.add(bookWithDecrementedCount);
             }
@@ -53,14 +53,14 @@ public class BookSet {
         return reducedBookList;
     }
 
-    private Book decrementBookCount(Book book) {
+    private HarryPotterBookType decrementBookCount(HarryPotterBookType book) {
         int reducedCount = book.getBookCount() - 1;
         int validReducedCount = reducedCount >= 0 ? reducedCount : 0;
-        return new Book(book.getBookType(), validReducedCount);
+        return new HarryPotterBookType(book.getBookType(), validReducedCount);
     }
 
     public double priceOfLargestSet() {
-        return DiscountPercentages.get(bookSetType) * Book.STANDARD_PRICE * bookSetType.numberOfTypesOfBooks;
+        return DiscountPercentages.get(bookSetType) * HarryPotterBookType.STANDARD_PRICE * bookSetType.numberOfTypesOfBooks;
     }
 
     public String toString() {

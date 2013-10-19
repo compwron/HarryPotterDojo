@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BooksBuilder {
-    private List<Book> books = new ArrayList<Book>();
+    private List<HarryPotterBookType> books = new ArrayList<HarryPotterBookType>();
 
-    public BooksBuilder withBook(Book book) {
+    public BooksBuilder withBook(HarryPotterBookType book) {
         books.add(book);
         return this;
     }
 
-    public List<Book> build() {
+    public List<HarryPotterBookType> build() {
         return books;
     }
 }

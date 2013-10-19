@@ -5,9 +5,8 @@ import java.util.List;
 public class ShoppingCart {
     private final double booksPrice;
 
-    public ShoppingCart(List<Book> books) {
-        BookSet largestBookSetInCart = new BookSet(books);
-        this.booksPrice = applyDiscounts(largestBookSetInCart, 0);
+    public ShoppingCart(List<HarryPotterBookType> books) {
+        this.booksPrice = applyDiscounts(new BookSet(books), 0);
     }
 
     private double applyDiscounts(BookSet bookSet, double currentTotal) {
