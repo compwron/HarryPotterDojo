@@ -1,4 +1,7 @@
+import lombok.Getter;
+
 public class Book {
+    @Getter
     private final int bookCount;
 
     public Book(BookType bookType, int bookCount) {
