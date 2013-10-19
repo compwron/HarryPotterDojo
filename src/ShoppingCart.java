@@ -16,13 +16,7 @@ public class ShoppingCart {
     }
 
 
-    private HashMap<BookType, Integer> emptyBookTypes() {
-        HashMap<BookType, Integer> emptyBookTypes = new HashMap<BookType, Integer>();
-        for (BookType bookType : BookType.values()) {
-            emptyBookTypes.put(bookType, 0);
-        }
-        return emptyBookTypes;
-    }
+
 
     private String formatPriceToTwoDigits(double booksPrice) {
         NumberFormat formatter = new DecimalFormat("#0.00");
