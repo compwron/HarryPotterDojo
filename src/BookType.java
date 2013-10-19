@@ -1,3 +1,3 @@
 public enum BookType {
-    One
+    Two, Three, Four, Five, One
 }
