@@ -11,6 +11,8 @@ public class DiscountPercentages {
         percentagesPerNumberOfBookTypes.put(1, 1.00);
         percentagesPerNumberOfBookTypes.put(2, 0.95);
         percentagesPerNumberOfBookTypes.put(3, 0.90);
+        percentagesPerNumberOfBookTypes.put(4, 0.80);
+        percentagesPerNumberOfBookTypes.put(5, 0.75);
         return percentagesPerNumberOfBookTypes;
     }
 }
