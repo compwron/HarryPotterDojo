@@ -5,7 +5,7 @@ import java.util.List;
 public class ShoppingCart {
     private final double booksPrice;
 
-    public ShoppingCart(List<HarryPotterBookType> books) {
+    public ShoppingCart(List<Book> books) {
         this.booksPrice = applyDiscounts(new BookSet(books), 0);
     }
 
