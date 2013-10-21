@@ -17,9 +17,9 @@ public class BookSet {
         this.bookSetType = bookSetTypeOf(findBooksPresent(books));
     }
 
-    private BookSetType bookSetTypeOf(HashMap<BookSeriesNumber, Boolean> booksPresent) {
+    private BookSetType bookSetTypeOf(HashMap<HarryPotterNovel, Boolean> booksPresent) {
         int numberOfTypesOfBooks = 0;
-        for (BookSeriesNumber bookType : booksPresent.keySet()) {
+        for (HarryPotterNovel bookType : booksPresent.keySet()) {
             if (booksPresent.get(bookType)) {
                 numberOfTypesOfBooks++;
             }
@@ -27,10 +27,10 @@ public class BookSet {
         return BookSetType.valueOf(numberOfTypesOfBooks);
     }
 
-    private HashMap<BookSeriesNumber, Boolean> findBooksPresent(List<HarryPotterBookType> books) {
-        HashMap<BookSeriesNumber, Boolean> booksPresent = new HashMap<BookSeriesNumber, Boolean>();
+    private HashMap<HarryPotterNovel, Boolean> findBooksPresent(List<HarryPotterBookType> books) {
+        HashMap<HarryPotterNovel, Boolean> booksPresent = new HashMap<HarryPotterNovel, Boolean>();
         for (HarryPotterBookType book : books) {
-            booksPresent.put(book.getBookSeriesNumber(), true);
+            booksPresent.put(book.getHarryPotterNovel(), true);
         }
         return booksPresent;
     }
@@ -53,7 +53,7 @@ public class BookSet {
     private HarryPotterBookType decrementBookCount(HarryPotterBookType book) {
         int reducedCount = book.getBookCount() - 1;
         int validReducedCount = reducedCount >= 0 ? reducedCount : 0;
-        return new HarryPotterBookType(book.getBookSeriesNumber(), validReducedCount);
+        return new HarryPotterBookType(book.getHarryPotterNovel(), validReducedCount);
     }
 
     public double priceOfLargestSet() {

@@ -5,11 +5,11 @@ import java.util.List;
 public class Main {
     public static void main(String... args){
         List<HarryPotterBookType> books = Lists.newArrayList();
-        books.add(new HarryPotterBookType(BookSeriesNumber.One, 2));
-        books.add(new HarryPotterBookType(BookSeriesNumber.Two, 2));
-        books.add(new HarryPotterBookType(BookSeriesNumber.Three, 2));
-        books.add(new HarryPotterBookType(BookSeriesNumber.Four, 1));
-        books.add(new HarryPotterBookType(BookSeriesNumber.Five, 1));
+        books.add(new HarryPotterBookType(HarryPotterNovel.PhilosophersStone, 2));
+        books.add(new HarryPotterBookType(HarryPotterNovel.ChamberOfSecrets, 2));
+        books.add(new HarryPotterBookType(HarryPotterNovel.PrisonerOfAzkaban, 2));
+        books.add(new HarryPotterBookType(HarryPotterNovel.GobletOfFire, 1));
+        books.add(new HarryPotterBookType(HarryPotterNovel.OrderOfThePhoenix, 1));
 
         ShoppingCart cart = new ShoppingCart(books);
 
